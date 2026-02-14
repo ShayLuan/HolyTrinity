@@ -2,44 +2,46 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
+const firstBook = {
+  author: 'Bunnie Xo',
+  title: 'Stripped Down: Unfiltered and Unapologetic',
+  img: 'https://m.media-amazon.com/images/I/71DzlIl-gML._SL1500_.jpg',
+};
+
+const secondBook = {
+  author: 'Virginia Evans',
+  title: 'The Correspondent',
+  img: 'https://m.media-amazon.com/images/I/81PndgdGCXL._SL1500_.jpg',
+};
+
 const BookList = () => {
   return (
     <section className="booklist">
-      <Book />
-      <Book />
-      <Book />
+      <Book
+        author={firstBook.author}
+        title={firstBook.title}
+        img={firstBook.img}
+      />
+      <Book
+        author={secondBook.author}
+        title={secondBook.title}
+        img={secondBook.img}
+      />
     </section>
   );
 };
 
-const Book = () => {
+const Book = (props) => {
+  const { img, title, author } = props;
+  console.log(props);
   return (
     <article className="book">
-      <Image />
-      <Title />
-      <Author />
+      <img src={img} alt={title} />
+      <h2>{title}</h2>
+      <h4>{author}</h4>
     </article>
   );
 };
-
-const Image = () => {
-  return (
-    <img
-      src="https://m.media-amazon.com/images/I/71UX57RpGOL._SY342_.jpg"
-      alt="Book Cover"
-    />
-  );
-};
-
-const Title = () => {
-  return <h2>Public Speaking How To Speak Effectively Without Fear</h2>;
-};
-
-const Author = () => (
-  <h4 style={{ color: '#617d98', fontSize: '0.75rem', marginTop: '0.5rem' }}>
-    Derek Borthwick
-  </h4>
-);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
